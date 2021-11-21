@@ -1,11 +1,10 @@
 
-Trabajo snake 2.0(Con clases)
+**Trabajo snake 2.0(Con clases)**
 
-Integrantes:
+**Integrantes:**
+  * Marcelo Torres Acuña
 
--Marcelo Torres Acuña
+  * Alexander Carpio Mamani
 
--Alexander Carpio Mamani
-
--Cristian Mellado Baca
+  * Cristian Mellado Baca
 
