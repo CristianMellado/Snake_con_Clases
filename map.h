@@ -10,12 +10,12 @@ class Map{
     public:
         int **matrix, size;
         char wall;
-        Snake *player_1, *player_2;
+        Snake *player_1, *player_2;   // Definición de variables tipo clase(Snake, Apple, Obs).
         Apple *apple;
         Obs *obs;
 
-        Map(int size);
-        ~Map();
+        Map(int size);  // Constructor
+        ~Map();  // Destructor
         void run_map();
         void save_in_matrix();
         void draw_map();

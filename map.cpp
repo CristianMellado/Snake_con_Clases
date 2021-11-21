@@ -4,7 +4,7 @@ Map::Map(int size=0){
     this->size = size;
     wall = char(254);
 
-    matrix = new int *[size];
+    matrix = new int *[size];  // separación de memoria para la matriz o mapa
 	for(int i=0;i<size;i++){    
 		matrix[i] = new int[size];
 	}
@@ -22,7 +22,7 @@ Map::Map(int size=0){
 	}
 
 
-    player_1 = new Snake(size, "@", 1);
+    player_1 = new Snake(size, "@", 1); // separacion de memoria para llos objetos(Snake, Apple, Obs)
     player_2 = new Snake(size, "&", 2);
 	
 	string img_app = "\033[31m";
@@ -33,13 +33,13 @@ Map::Map(int size=0){
     obs = new Obs(size, "#");
 }
 
-Map::~Map(){
-	for(int i=0;i<size;i++){
+Map::~Map(){  // destructor
+	for(int i=0;i<size;i++){   // liberación de memoria para la matriz o mapa
 		delete[] matrix[i];       
 	}
 	delete[] matrix;
 
-    delete player_1;
+    delete player_1;  // lineración de memoria para los objetos Snake, Apple, Obs.
     delete player_2;
     delete apple;
     delete obs;
@@ -50,10 +50,10 @@ void Map::run_map(){
 		char key = 'x';
 		if (kbhit()){
 			key = getch();
-			if (key == 'q' || key == 'Q') break;
+			if (key == 'q' || key == 'Q') break;  // si presionamos 'q' o 'Q' termina el juego.
 		}
 		
-		if (obs->get_n_obs() > 4) break;
+		if (obs->get_n_obs() > 4) break;  // si el número de colisiónes es mayor a 4 termina el juego.
 		
 		player_1->snake_controller(obs, key);
 		player_2->snake_controller(obs, key);
@@ -71,11 +71,11 @@ void Map::run_map(){
 		
 		obs->collide_snakes(player_1, player_2);
 		
-        draw_map();
+        draw_map();  // imprime el mapa o matriz.
     }
 }
 
-void Map::save_in_matrix(){
+void Map::save_in_matrix(){  // guarda las posiciones de los objetos en la matriz o mapa.
 	for(int i=0;i<size;i++){
         for(int j=0;j<size;j++){
             if (obs->same_pos(i,j))
@@ -92,7 +92,7 @@ void Map::save_in_matrix(){
 	}  
 }
 
-void Map::draw_map(){
+void Map::draw_map(){   // impresion de mapa o matriz.
 	save_in_matrix();
 	system(" ");
 	cout<<"\033[H\033[2J\033[3J";

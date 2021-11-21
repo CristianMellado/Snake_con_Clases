@@ -1,19 +1,20 @@
 #include "snake.h"
 
+// los parametros de la clase padre serán enviados por el nombre de la clase padre.
 Snake::Snake(int size, string img, int player):Printer(size, img){
 	len = 1;
 	limit_t = 10;
 	t = 0;
 	
-    snake = new int *[size];
+    snake = new int *[size];  // separamos memoria para un arreglo de punteros int.
 	for(int i=0; i<size; i++){    
-		snake[i] = new int[2];
+		snake[i] = new int[2]; // separamos para cada elemento del puntero un array de longitud 2(x,y).
 	}
 	
     snake[0][0] = size/2;
     snake[0][1] = size/2;
 
-	keys = new char[4];
+	keys = new char[4];  // separamos memoria para un arreglo de char's.
 	
     if (player==1){
         keys[0] = 'a';
@@ -34,14 +35,14 @@ Snake::Snake(int size, string img, int player):Printer(size, img){
 }
 
 Snake::~Snake(){
-	for(int i=0;i<size;i++){
+	for(int i=0;i<size;i++){  // liberamos la memoria separa para cada elemento del array de punteros int.
 		delete[] snake[i];       
 	}
-	delete[] snake;
-	delete[] keys;
+	delete[] snake; // liberamos la memoria del arreglo de punteros int.
+	delete[] keys; // liberamos la memoria para el arreglo de char's
 }
 
-void Snake::snake_controller(Obs *obs, char key){
+void Snake::snake_controller(Obs *obs, char key){ // recibe un puntero de la clase Obs y un char.
 	x = snake[0][0];
 	y = snake[0][1];
 	
@@ -51,7 +52,7 @@ void Snake::snake_controller(Obs *obs, char key){
 		
 	if (state == keys[0]){
 		x--;
-		if (x==-1 || obs->collide_obs(x, y)){ 
+		if (x==-1 || obs->collide_obs(x, y)){  // si esque colisiona con la pared o un obstaculo no avanzara.
 			x++;
 			crash_snake();
 		}
@@ -78,7 +79,7 @@ void Snake::snake_controller(Obs *obs, char key){
 		}
 	}
 
-	int ago_x=snake[0][0], ago_y=snake[0][1], copy_x, copy_y;
+	int ago_x=snake[0][0], ago_y=snake[0][1], copy_x, copy_y;  // la cola sigue al elemento n-1
 	for (int i=1; i<len; i++){
 		copy_x = snake[i][0];
 		copy_y = snake[i][1];
@@ -89,7 +90,7 @@ void Snake::snake_controller(Obs *obs, char key){
 	}
 	snake[0][0] = x; snake[0][1] = y;
 	
-	if (t > limit_t){
+	if (t > limit_t){  // controlador de tiempo para el crecimiento de la cola
 		t = 0;
 		len++;
 	}
@@ -102,11 +103,11 @@ void Snake::change_course(){
 	char current = state;
 	srand(time(NULL));
 	do{
-		state = keys[rand()%4];
-	}while(state==current);
+		state = keys[rand()%4];  // elige una direccion random para la snake.
+	}while(state==current); // valida si no es la misma direccion que la actual.
 }
 
-bool Snake::same_pos(int x, int y){
+bool Snake::same_pos(int x, int y){  // esta funcion verifica si a la hora de guardar los datos en la matrix o mapa son iguales en posiciones
     for(int i=0; i<len; i++){
         if (y==snake[i][0] && x==snake[i][1]) return true;
     }

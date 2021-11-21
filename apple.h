@@ -5,7 +5,7 @@
 
 class Obs;
 
-class Apple : public Printer{
+class Apple : public Printer{  // hereda los metodos y atributos de la clase Printer
 	public:
   	    int *apple;
         bool mostrar;
@@ -14,6 +14,5 @@ class Apple : public Printer{
         ~Apple();
 	    void appear_apple(Obs *);
 		bool same_pos(int,int);
-		int *get_apple();
 		void ate_apple();
 };

@@ -1,18 +1,18 @@
 #include "apple.h"
 
-Apple::Apple(int size, string img):Printer(size, img){
+Apple::Apple(int size, string img):Printer(size, img){ // constructor y envio de parametros para constructor padre
 	mostrar = true;
 	
-	apple = new int[2];
+	apple = new int[2]; // separamos memoria para el arreglo apple(x,y).
 	apple[0] = -1;
 	apple[1] = -1;
 }
 
-Apple::~Apple(){
+Apple::~Apple(){  // liberación de memoria para el arreglo apple (x,y).
 	delete []apple;
 }
 
-void Apple::appear_apple(Obs *obs){
+void Apple::appear_apple(Obs *obs){ // recibe un puntero de tipo de dato clase Obs
 	if(mostrar){
 		mostrar=false;
 		srand(time(NULL));
@@ -26,10 +26,6 @@ void Apple::appear_apple(Obs *obs){
 bool Apple::same_pos(int x, int y){
 	if (apple[0] == y && apple[1] == x) return true;
 	return false;
-}
-
-int *Apple::get_apple(){
-	return apple;
 }
 
 void Apple::ate_apple(){

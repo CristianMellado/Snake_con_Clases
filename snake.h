@@ -4,9 +4,9 @@
 #include "obstacle.h"
 #include "printer.cpp"
 
-class Obs;
+class Obs;  // prototipo de clase Obs
 
-class Snake : public Printer{
+class Snake : public Printer{   // Herencia de Class Printer a class Snake
     public:
         int x, y, len, **snake, t, limit_t;
         char *keys, state;

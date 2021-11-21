@@ -1,20 +1,20 @@
 #include "obstacle.h"
 
-Obs::Obs(int size, string img):Printer(size, img){
+Obs::Obs(int size, string img):Printer(size, img){  // constructor y llamada de constructor de clase padre
     max_obs = 5;
     n_obs = 0;
 
-    obs = new int *[max_obs];
-	for(int i=0;i<max_obs;i++){    
+    obs = new int *[max_obs];  // separamos memoria para un array de punteros int
+	for(int i=0;i<max_obs;i++){    // separamos memoria para cada puntero del array de int's
 		obs[i] = new int[2];
 	}
 }
 
-Obs::~Obs(){
+Obs::~Obs(){   // destructor de la clase Obs
 	for(int i=0;i<max_obs;i++){
-		delete[] obs[i];       
+		delete[] obs[i];        // liberamos memoria para cada elemento del array de punteros
 	}
-	delete[] obs;
+	delete[] obs;   // liberamos la memoria del array de punteros
 }
 
 
@@ -47,7 +47,7 @@ int Obs::get_n_obs(){
     return n_obs;
 }
 
-void Obs::collide_snakes(Snake *p1, Snake *p2){
+void Obs::collide_snakes(Snake *p1, Snake *p2){ // recibe dos punteros de la clase Snake
 	bool one = false, two=false;
 	int x,y,a,b;
 	
