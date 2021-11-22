@@ -1,18 +1,3 @@
-/**
-Snake2.0
-
-
-Departamento de Ciencia de la Computación
-Prof: D.Sc. Manuel Eduardo Loaiza Fernández
-
-Alumnos:
- - Cristian Mellado Baca
- - Marcelo Torres Acuña
- - Alexander Carpio Mamani
-*/
-
-
-
 #include "map.h"
 
 Map::Map(int size=0){
@@ -73,14 +58,12 @@ void Map::run_map(){
 		player_1->snake_controller(obs, key);
 		player_2->snake_controller(obs, key);
 		
-		apple->appear_apple(obs);
-		
 		if(apple->same_pos(player_1->snake[0][1], player_1->snake[0][0])){
-			apple->ate_apple();
+			apple->ate_apple(obs);
 			player_1->add_tail();
 		}
 		else if (apple->same_pos(player_2->snake[0][1], player_2->snake[0][0])){
-			apple->ate_apple();
+			apple->ate_apple(obs);
 			player_2->add_tail();
 		}
 		
