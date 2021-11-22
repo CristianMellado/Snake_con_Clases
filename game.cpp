@@ -24,11 +24,10 @@ void run_game(){
 
 		Map *mapa = new Map(size);    // reservamos memoria para el objeto Map.
 		mapa->run_map();
+		delete mapa;    // liberamos la memoria del objeto mapa.
 		
 		cout<<"\n Do you want to play again ? (yes: y / no: any key): ";cin>>op;
 		if (op != 'y') break;
-		
-		delete mapa;    // liberamos la memoria del objeto mapa.
 	}
 	
 }
