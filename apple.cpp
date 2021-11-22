@@ -1,3 +1,17 @@
+/**
+Snake2.0
+
+
+Departamento de Ciencia de la Computación
+Prof: D.Sc. Manuel Eduardo Loaiza Fernández
+
+Alumnos:
+ - Cristian Mellado Baca
+ - Marcelo Torres Acuña
+ - Alexander Carpio Mamani
+*/
+
+
 #include "apple.h"
 
 Apple::Apple(int size, string img):Printer(size, img){ // constructor y envio de parametros para constructor padre
