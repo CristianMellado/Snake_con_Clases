@@ -1,40 +1,15 @@
-/**
-Snake2.0
-
-
-Departamento de Ciencia de la Computación
-Prof: D.Sc. Manuel Eduardo Loaiza Fernández
-
-Alumnos:
- - Cristian Mellado Baca
- - Marcelo Torres Acuña
- - Alexander Carpio Mamani
-*/
-
-
 #include "apple.h"
 
 Apple::Apple(int size, string img):Printer(size, img){ // constructor y envio de parametros para constructor padre
-	mostrar = true;
-	
 	apple = new int[2]; // separamos memoria para el arreglo apple(x,y).
-	apple[0] = -1;
-	apple[1] = -1;
+	
+	srand(time(NULL));
+	apple[0] = rand()%(size);
+	apple[1] = rand()%(size);
 }
 
 Apple::~Apple(){  // liberación de memoria para el arreglo apple (x,y).
 	delete []apple;
-}
-
-void Apple::appear_apple(Obs *obs){ // recibe un puntero de tipo de dato clase Obs
-	if(mostrar){
-		mostrar=false;
-		srand(time(NULL));
-		do{
-			apple[0] = rand()%(size);
-			apple[1] = rand()%(size);
-		}while(obs->same_pos(apple[1], apple[0]));
-	}
 }
 
 bool Apple::same_pos(int x, int y){
@@ -42,6 +17,10 @@ bool Apple::same_pos(int x, int y){
 	return false;
 }
 
-void Apple::ate_apple(){
-	mostrar = true;
+void Apple::ate_apple(Obs *obs){
+	srand(time(NULL));
+	do{
+		apple[0] = rand()%(size);
+		apple[1] = rand()%(size);
+	}while(obs->same_pos(apple[1], apple[0]));
 }
