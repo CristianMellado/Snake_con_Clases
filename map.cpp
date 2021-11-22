@@ -1,3 +1,18 @@
+/**
+Snake2.0
+
+
+Departamento de Ciencia de la Computación
+Prof: D.Sc. Manuel Eduardo Loaiza Fernández
+
+Alumnos:
+ - Cristian Mellado Baca
+ - Marcelo Torres Acuña
+ - Alexander Carpio Mamani
+*/
+
+
+
 #include "map.h"
 
 Map::Map(int size=0){
