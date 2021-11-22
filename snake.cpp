@@ -1,3 +1,17 @@
+/**
+Snake2.0
+
+
+Departamento de Ciencia de la Computación
+Prof: D.Sc. Manuel Eduardo Loaiza Fernández
+
+Alumnos:
+ - Cristian Mellado Baca
+ - Marcelo Torres Acuña
+ - Alexander Carpio Mamani
+*/
+
+
 #include "snake.h"
 
 // los parametros de la clase padre serán enviados por el nombre de la clase padre.
