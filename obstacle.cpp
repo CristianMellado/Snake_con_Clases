@@ -1,3 +1,17 @@
+/**
+Snake2.0
+
+
+Departamento de Ciencia de la Computación
+Prof: D.Sc. Manuel Eduardo Loaiza Fernández
+
+Alumnos:
+ - Cristian Mellado Baca
+ - Marcelo Torres Acuña
+ - Alexander Carpio Mamani
+*/
+
+
 #include "obstacle.h"
 
 Obs::Obs(int size, string img):Printer(size, img){  // constructor y llamada de constructor de clase padre
